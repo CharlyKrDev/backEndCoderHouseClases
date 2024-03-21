@@ -10,3 +10,40 @@
  * Realizar prueba de individualidad entre las instancias.
  */
 
+class Contador {
+
+  static cuentaGlobal = 0;
+
+  constructor(responsable) {
+
+    this.responsable = responsable;
+    this.cuentaIndividual = 0;
+
+  }
+
+  getResponsable() {
+
+    return this.responsable;
+
+  }
+  getCuentaIndividual() {
+
+    return this.cuentaIndividual;
+
+  }
+  static getCuentaGlobal() {
+
+    return Contador.cuentaGlobal
+  }
+
+  contar(){
+    
+    Contador.cuentaGlobal++
+    this.cuentaIndividual++
+
+  }
+
+
+}
+
+
