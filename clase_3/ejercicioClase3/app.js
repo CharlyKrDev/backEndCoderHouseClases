@@ -33,6 +33,10 @@ class TicketManager {
     }
     agregarUsuario(eventoId, usuarioId) {
         const eventoEncontrado = this.eventos.find((evento) => evento.id === eventoId)
+        console.log(`prueba`);
+
+        console.log(eventoEncontrado)
+        console.log(`prueba`);
         if (!eventoEncontrado) {
             console.log('El Evento no fue encontrado')
             return
