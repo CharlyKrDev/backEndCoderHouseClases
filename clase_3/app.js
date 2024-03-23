@@ -1,13 +1,13 @@
 //Operadores exponenciales, con ES6 se agrega la ** para usar de forma exponencial
 
-const base  = 5
+const base = 5
 const exponente = 2
 const resultado = base ** exponente
 console.log(resultado)
 
 //método includes, nos indica true o false si hay un elemento dentro de un array
 
-const numeros =[2, 3, 4, 5, 6]
+const numeros = [2, 3, 4, 5, 6]
 const bebidas = ['cafe', 'mate', 'agua']
 console.log(bebidas.includes('agua'))
 
@@ -15,12 +15,12 @@ console.log(bebidas.includes('agua'))
 
 const nombre = null
 const nombrePorDefecto = 'CoderHouse'
-const nombreCompleto = nombre  ?? nombrePorDefecto
+const nombreCompleto = nombre ?? nombrePorDefecto
 console.log(nombreCompleto)
 
 //Object.entries, Object.values, Object.keys
 
-const persona ={
+const persona = {
     nombre: 'Coder',
     edad: 30,
     ciudad: 'Cordoba'
@@ -36,13 +36,13 @@ console.log(valores)
 console.log(claves)
 
 // Finally VER LA CLASE
-const ejemploPromesa = ()=>{
-    return new Promise ((resolve, reject)=>{
-        setTimeout(()=>{
+const ejemploPromesa = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             const exito = true
-            if(exito){
+            if (exito) {
                 resolve('Exito')
-            }else{
+            } else {
                 reject('Error')
             }
 
@@ -61,39 +61,44 @@ const nuevoNumeros = [...numeros2, 5, 6]
 console.log(nuevoNumeros)
 // Ejercicio
 
-const objetos =  [
+const objetos = [
     {
-    manzanas:3,
-    peras:2,
-    carne:1,
-    jugos:5,
-    dulces:2
+        manzanas: 3,
+        peras: 2,
+        carne: 1,
+        jugos: 5,
+        dulces: 2
     },
     {
-    manzanas:1,
-    sandias:1,
-    huevos:6,
-    jugos:1,
-    panes:4
+        manzanas: 1,
+        sandias: 1,
+        huevos: 6,
+        jugos: 1,
+        panes: 4
     }
 ]
 
-const tiposDeProductos = objetos.reduce((lista, objeto)=>{
-    Object.keys(objeto).forEach(producto =>{ // tambien se puede usar .map en vez de forEach, pero no seria recomendable pq map crearia un nuevo array el cual no estaria siendo usado.
-        if(!lista.includes(producto)){
+const nuevalista = objetos.reduce((lista, objeto) => {
+//uso el reduce para recorrer cada elemento del array y devolver sus objetos
+    console.log(Object.keys(objeto))
+//ahora que tengo la informacion en objeto, puedo usar el Object.keys para obtener la clave de los objetos y devolverlos como array, y con el forEach recorro esos arrays para poder obtener la clave de forma indivualizada 
+    Object.keys(objeto).forEach((producto) => {
+
+        if (!lista.includes(producto))
+//con el IF armo la condicion para determinar que si la clave ya esta incluida dentro de la lista que no la vuelva a pushear, y de esta forma genera un nuevo array sin productos repetidos.
             lista.push(producto)
 
-        }
     })
     return lista
 
-},[])
-console.log(tiposDeProductos)
+}, [])
 
-const totalProductosVendidos = objetos.reduce((total, objeto) =>{
-    const cantidades = Object.values(objeto)
-    const suma = cantidades.reduce((a, b) => a + b, 0)
-    return total + suma
+const ventas = objetos.reduce((venta, objeto) => {
+    console.log(objeto) // con el reduce, obtengo los objetos de adentro del array
+    const valores = Object.values(objeto) // ahora que tengo los objetos puedo usar Object.value, que funciona solo sobre objetos y obtener 2 array con cada valor, el Object se ejecuta sobre un objeto, pero devuelve un array
+    console.log(valores)
+    const total = valores.reduce((acum, valor) => acum + valor, 0) // ahora tomo esos array los sumo con un reduce
+    console.log(total)
+    return venta + total //sumo ambos acumulados
+
 }, 0)
-
-console.log(totalProductosVendidos)
