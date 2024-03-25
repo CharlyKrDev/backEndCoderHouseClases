@@ -1,10 +1,9 @@
 class ProductManager {
+
     constructor() {
         this.products = []
 
     }
-
-
 
 
     addProduct(title, description, price, thumbnail, code, stock) {
@@ -19,7 +18,7 @@ class ProductManager {
             code,
             stock
         }
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
+        if (!(title && description && price && thumbnail && code && stock)) {
             console.log('Todos los campos son obligatorios');
             return;
         }
@@ -42,7 +41,9 @@ class ProductManager {
 }
 
 const productManager = new ProductManager();
+
 productManager.addProduct('Leche', 'La serenisima', 1500, `https://media.f2h.shop/media/catalog/product/cache/ab45d104292f1bb63d093e6be8310c97/i/m/imageedit_1_4837957539.png`, `lse3`, 10)
+
 
 console.log(productManager.getProducts());
 
