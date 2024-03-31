@@ -7,10 +7,12 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "start": "node --watch clase_4/app.js",
+    "clase_3": "node --watch clase_3/app.js",
+    "clase_4": "node --watch clase_4/app.js",
     "clase_5": "node --watch clase_5/app.js"
   },
   "author": "",
   "license": "ISC",
   "description": ""
 }
+

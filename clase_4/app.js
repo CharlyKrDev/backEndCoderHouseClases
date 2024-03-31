@@ -41,7 +41,7 @@ console.log(nombres)
 const persona ={
     nombre:`Franco`,
     edad:25,
-    saludar:function () {console.log(`Hola, soy ${this.nombre}`)}
+    saludar: function () {console.log(`Hola, soy ${this.nombre}`)}
 }
 
 persona.saludar()

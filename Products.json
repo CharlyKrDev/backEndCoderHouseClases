@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Leche",
+    "description": "Ilolai",
+    "price": 2500,
+    "thumbnail": "imagendeleche.jpg",
+    "code": "IlolaiLeche",
+    "stock": 20
+  },
+  {
+    "id": 2,
+    "title": "Leche",
+    "description": "La serenisima",
+    "price": 1500,
+    "thumbnail": "https://media.f2h.shop/media/catalog/product/cache/ab45d104292f1bb63d093e6be8310c97/i/m/imageedit_1_4837957539.png",
+    "code": "ls55",
+    "stock": 10
+  },
+  {
+    "id": 3,
+    "title": "La campagnola",
+    "description": "Mermelada de frutilla",
+    "price": 2500,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMnutC-MoSpAqdDf3VGm6YmmajggcTwpozAlajyZlnZw&s",
+    "code": "LCMF454",
+    "stock": 5
+  },
+  {
+    "id": 4,
+    "title": "Taragui",
+    "description": "Yerba Mate - 500gr",
+    "price": 500,
+    "thumbnail": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fyerbamateitalia.it%2Fyerba-mate-%2F16-yerba-mate-taragui-.html&psig=AOvVaw0T8wwks58mD2bm9sK37ZRa&ust=1711317795276000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIipgOKxi4UDFQAAAAAdAAAAABAE",
+    "code": "YMT500GC",
+    "stock": 5
+  }
+]

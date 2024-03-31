@@ -50,8 +50,18 @@ const ejemploPromesa = () => {
     })
 
 }
+// dentro de una promesa tenemos 3 estados, el pendiente, el resulto, y el rechazado. el pendiente es el estado por defecto una vez ejecutada la promesa, el resuelto y rechazado son el resultado de esa promesa, el resultado se vincula con el .then y el rechazo con el .catch. es por eso que si promesa no se resuelve con éxito se ejecuta el .catch, y si lo hace, el .then. El finally() se ejecuta siempre sin importar el resultado de la promesa en si.
 
 ejemploPromesa()
+    .then((resultado) => {
+        console.log(resultado)
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+    .finally(() => {
+        console.log(`La promesa ha sido finalizada`);
+    })
 
 // Spread Operator, realiza una copia de todo o lo que necesitemos, ya sea array u objetos, y a su vez se puede ampliar o reducir
 
@@ -79,13 +89,13 @@ const objetos = [
 ]
 
 const nuevalista = objetos.reduce((lista, objeto) => {
-//uso el reduce para recorrer cada elemento del array y devolver sus objetos
+    //uso el reduce para recorrer el array y devolver solo los objetos.
     console.log(Object.keys(objeto))
-//ahora que tengo la informacion en objeto, puedo usar el Object.keys para obtener la clave de los objetos y devolverlos como array, y con el forEach recorro esos arrays para poder obtener la clave de forma indivualizada 
+    //ahora que tengo la informacion en objeto, puedo usar el Object.keys para obtener la clave de los objetos y devolverlos como array, y con el forEach recorro esos arrays para poder obtener la clave de forma indivualizada 
     Object.keys(objeto).forEach((producto) => {
 
         if (!lista.includes(producto))
-//con el IF armo la condicion para determinar que si la clave ya esta incluida dentro de la lista que no la vuelva a pushear, y de esta forma genera un nuevo array sin productos repetidos.
+            //con el IF armo la condicion para determinar que si la clave ya esta incluida dentro de la lista que no la vuelva a pushear, y de esta forma genera un nuevo array sin productos repetidos.
             lista.push(producto)
 
     })

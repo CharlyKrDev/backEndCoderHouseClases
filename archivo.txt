@@ -1,0 +1,1 @@
+Contenido del archivo es (writeFile)Datos adicionales para mi archivo
