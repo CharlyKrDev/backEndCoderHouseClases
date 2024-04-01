@@ -119,21 +119,36 @@ class ProductManager {
 
         try {
             await this.readProducts()
-            const encontrarProductoPorId = this.products.findIndex(product => product.id === productId);
-            console.log(encontrarProductoPorId)
-            console.log(encontrarProductoPorId)
+
+            const consultarIndexPorId = this.products.findIndex(product => product.id === productId);
+            console.log(consultarIndexPorId)
 
 
-            if (encontrarProductoPorId !== -1) {
+            if (consultarIndexPorId !== -1) {
+                const keys = Object.keys(this.products[consultarIndexPorId])
+                console.log(keys)
+                const updatedKeys = Object.keys(updatedFields);
+                console.log(updatedKeys)
 
-                this.products[encontrarProductoPorId] = { ...this.products[encontrarProductoPorId], ...updatedFields };
-                this.writeProduct()
-                console.log('Producto actualizado correctamente');
+                const allKeysExist = updatedKeys.every(key => keys.includes(key));
+                if (!allKeysExist) {
 
-            } else {
 
-                console.log(`el producto buscado no existe o no esta disponible.`)
-            }
+                    console.log(`Para actualizar productos los keys son: title, descripcion, price, thumbnail, code y stock`)
+
+
+                }else {
+
+                    this.products[consultarIndexPorId] = { ...this.products[consultarIndexPorId], ...updatedFields };
+    
+                    console.log(this.products[consultarIndexPorId])
+    
+                    this.writeProduct()
+    
+                    console.log('Producto actualizado correctamente');   
+
+            } }else {
+                console.log(`El producto buscado no existe.`);}
 
 
         } catch (error) {

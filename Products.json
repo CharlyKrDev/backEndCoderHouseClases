@@ -19,12 +19,12 @@
   },
   {
     "id": 3,
-    "title": "perro",
+    "title": "Leche",
     "description": "La serenisima",
     "price": 1500,
     "thumbnail": "FOTO DEL PRODUCTO",
     "code": "ls55",
-    "stock": 10
+    "stock": 22
   },
   {
     "id": 4,

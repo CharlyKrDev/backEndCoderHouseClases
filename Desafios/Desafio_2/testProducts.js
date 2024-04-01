@@ -61,7 +61,7 @@ const updateProducts = async (id, updateFields) => {
     
 }
 
-updateProducts(3, {title:`perro`})
+updateProducts(3, {title:`Leche`, stock:22})
 
 //BORRAR PRODUCTO POR ID
 
