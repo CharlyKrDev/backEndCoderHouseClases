@@ -8,6 +8,38 @@ class ProductManager {
 
     }
 
+    async writeProduct() {
+        try {
+            const data = JSON.stringify(this.products, null, 2)
+            await fs.writeFile(this.path, data);
+
+        } catch (error) {
+
+            console.error(`Problemas al crear el producto`, error)
+
+
+        }
+    }
+
+    async readProducts() {
+
+        try {
+
+            const data = await fs.readFile(this.path, 'utf8');
+            this.products = JSON.parse(data);
+
+        } catch (error) {
+            if (error.code !== 'ENOENT') {
+                throw error
+            } else {
+
+                this.products = []
+
+            }
+
+        }
+
+    }
 
     async addProduct(title, description, price, thumbnail, code, stock) {
 
@@ -33,34 +65,14 @@ class ProductManager {
                 console.log(`El código ya está registrado`);
             } else {
                 this.products.push(product);
-                await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
-                console.log(`Se ha agregado el producto`);
+                this.writeProduct()
+
                 console.log(this.products);
             }
 
         } catch (error) {
 
             console.error(`Problemas al crear el producto`, error)
-
-        }
-
-    }
-
-    async readProducts() {
-
-        try {
-
-            const data = await fs.readFile(this.path, 'utf8');
-            this.products = JSON.parse(data);
-
-        } catch (error) {
-            if (error.code !== 'ENOENT') {
-                throw error
-            } else {
-
-                this.products = []
-
-            }
 
         }
 
@@ -107,10 +119,15 @@ class ProductManager {
 
         try {
             await this.readProducts()
-            const encontrarProductoPorId = this.products.find((prod) => prod.id === productId)
-            if (encontrarProductoPorId) {
-                Object.assign(encontrarProductoPorId, updatedFields)
-                await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+            const encontrarProductoPorId = this.products.findIndex(product => product.id === productId);
+            console.log(encontrarProductoPorId)
+            console.log(encontrarProductoPorId)
+
+
+            if (encontrarProductoPorId !== -1) {
+
+                this.products[encontrarProductoPorId] = { ...this.products[encontrarProductoPorId], ...updatedFields };
+                this.writeProduct()
                 console.log('Producto actualizado correctamente');
 
             } else {
@@ -125,6 +142,33 @@ class ProductManager {
 
         }
     }
+    async deleteProduct(productId) {
+        try {
+
+            await this.readProducts()
+            const encontrarProducto = this.products.findIndex(product => product.id === productId)
+            if (encontrarProducto !== -1) {
+                this.products.splice(encontrarProducto, 1);
+                await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+                console.log('Producto eliminado correctamente');
+                return true
+
+
+            } else {
+                console.log('Producto buscado no ha sido encontrado, recuerde que se busca por ID');
+
+            }
+
+
+
+        } catch (error) {
+
+            console.error(`Error al acceder al archivo`, error)
+
+        }
+    }
 
 }
 module.exports = ProductManager
+
+
