@@ -23,10 +23,13 @@ class ProductManager {
 
     async readProducts() {
 
+   
+
         try {
 
             const data = await fs.readFile(this.path, 'utf8');
             this.products = JSON.parse(data);
+            
 
         } catch (error) {
             if (error.code !== 'ENOENT') {
@@ -41,22 +44,14 @@ class ProductManager {
 
     }
 
-    async addProduct(title, description, price, thumbnail, code, stock) {
 
+    async addProduct(newProduct) {
+        const { title, description, price, thumbnail, code, stock } = newProduct;
         try {
             await this.readProducts();
-            const productId = this.products.length + 1
 
             const codigoRegistrado = this.products.some(product => product.code === code);
-            const product = {
-                id: productId,
-                title,
-                description,
-                price,
-                thumbnail,
-                code,
-                stock
-            }
+
             if (!(title && description && price && thumbnail && code && stock)) {
                 console.log('Todos los campos son obligatorios');
                 return;
@@ -64,10 +59,13 @@ class ProductManager {
             if (codigoRegistrado) {
                 console.log(`El código ya está registrado`);
             } else {
-                this.products.push(product);
+                const lastId = this.products.length > 0 ? this.products[this.products.length - 1].id : 0
+                const newId = lastId + 1;
+                newProduct.id = newId;
+                this.products.push(newProduct);
                 this.writeProduct()
+                console.log(`El producto ha sido agregado correctamente`)
 
-                console.log(this.products);
             }
 
         } catch (error) {
@@ -121,34 +119,35 @@ class ProductManager {
             await this.readProducts()
 
             const consultarIndexPorId = this.products.findIndex(product => product.id === productId);
-            console.log(consultarIndexPorId)
 
 
             if (consultarIndexPorId !== -1) {
                 const keys = Object.keys(this.products[consultarIndexPorId])
-                console.log(keys)
                 const updatedKeys = Object.keys(updatedFields);
-                console.log(updatedKeys)
 
                 const allKeysExist = updatedKeys.every(key => keys.includes(key));
-                if (!allKeysExist) {
+                if (updatedFields.id) {
 
 
-                    console.log(`Para actualizar productos los keys son: title, descripcion, price, thumbnail, code y stock`)
+                    console.log(`El ID no se puede cambiar, las keys son: title, description, price, thumbnail, code y stock`)
+
+                }
+                else if (!allKeysExist) {
 
 
-                }else {
+                    console.log(`Para actualizar productos las keys son: title, description, price, thumbnail, code y stock`)
+
+
+                } else {
 
                     this.products[consultarIndexPorId] = { ...this.products[consultarIndexPorId], ...updatedFields };
-    
-                    console.log(this.products[consultarIndexPorId])
-    
                     this.writeProduct()
-    
-                    console.log('Producto actualizado correctamente');   
+                    console.log('Producto actualizado correctamente');
 
-            } }else {
-                console.log(`El producto buscado no existe.`);}
+                }
+            } else {
+                console.log(`El producto buscado no existe.`);
+            }
 
 
         } catch (error) {

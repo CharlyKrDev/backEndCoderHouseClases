@@ -71,7 +71,7 @@ obtenerDatosUsuario(123, mostrarDatosDeUsuario)
 const promesa = new Promise((resolve, reject) =>{
     setTimeout(()=>{
 
-        const exito = false
+        const exito = true
         if(exito){
             resolve(`Tarea ejecutada con éxito`)
         } else {
@@ -84,3 +84,4 @@ const promesa = new Promise((resolve, reject) =>{
 promesa.then((mensaje)=>{
     console.log(`Exito`, mensaje)
 }).catch((error)=>{console.log(`Error`, error);})
+

@@ -4,19 +4,17 @@ const ProductManager = require("./app");
 
 
 
-const productManager = new ProductManager();
+const productManager = new ProductManager(`Products.json`);
 
 //CARGA DE PRODUCTOS
 
 // const addProducts = async () => {
 
 
-//     await productManager.addProduct('Leche', 'La serenisima', 1500, `FOTO DEL PRODUCTO`, `lse3`, 10)
-//     await productManager.addProduct('Leche', 'La serenisima', 1500, `FOTO DEL PRODUCTO`, `lse1`, 10)
-//     await productManager.addProduct('Leche', 'La serenisima', 1500, `FOTO DEL PRODUCTO`, `ls55`, 10)
-//     await productManager.addProduct('La campagnola', 'Mermelada de frutilla', 2500, `FOTO DEL PRODUCTO`, 'ls56', 5)
-//     await productManager.addProduct('Taragui', 'Yerba Mate - 500gr', 500, `FOTO DEL PRODUCTO`, 'YMT500GC', 5)
-
+//     await productManager.addProduct({title:'Leche', description:'La serenisima', price:1500, thumbnail:`FOTO DEL PRODUCTO`, code:`lse3`, stock:10})
+//     await productManager.addProduct({title:'Leche', description:'La serenisima', price:1500, thumbnail:`FOTO DEL PRODUCTO`, code:`lse1`, stock:10})
+//     await productManager.addProduct({title:'Leche', description:'La serenisima', price:1500, thumbnail:`FOTO DEL PRODUCTO`, code:`ls55`, stock:10})
+ 
 
 
 // }
@@ -51,17 +49,17 @@ const productManager = new ProductManager();
 //         });
 // }
 
-// getProductId(1)
+// getProductId(5)
 
 //ACTUALIZACIÓN DE PRODUCTO
 
-const updateProducts = async (id, updateFields) => {
+// const updateProducts = async (id, updateFields) => {
 
-    productManager.updateProduct( id, updateFields)
+//     productManager.updateProduct( id, updateFields)
     
-}
+// }
 
-updateProducts(3, {title:`Leche`, stock:22})
+// updateProducts(3, {title: `Manteca`})
 
 //BORRAR PRODUCTO POR ID
 
@@ -71,4 +69,4 @@ updateProducts(3, {title:`Leche`, stock:22})
 //     productManager.deleteProduct(ID)
 
 // }
-// deleteProduct(1)
+// deleteProduct(5)
