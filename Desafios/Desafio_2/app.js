@@ -1,11 +1,9 @@
-const fs = require(`fs`).promises
+const fs = require('fs').promises;
 
 class ProductManager {
-
-    constructor(filePath = `Products.json`) {
-        this.products = []
+    constructor(filePath = 'Products.json') {
+        this.products = [];
         this.path = filePath;
-
     }
 
     async writeProduct() {
@@ -23,13 +21,13 @@ class ProductManager {
 
     async readProducts() {
 
-   
+
 
         try {
 
             const data = await fs.readFile(this.path, 'utf8');
             this.products = JSON.parse(data);
-            
+
 
         } catch (error) {
             if (error.code !== 'ENOENT') {

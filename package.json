@@ -1,18 +1,18 @@
 {
   "dependencies": {
-    "express": "^4.18.3"
+    "express": "^4.19.2"
   },
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "clase_3": "node --watch clase_3/app.js",
     "clase_4": "node --watch clase_4/app.js",
-    "clase_5": "node --watch clase_5/app.js"
+    "clase_5": "node --watch clase_5/app.js",
+    "clase_6": "node --watch clase_6/app.js",
+    "clase_7": "node --watch clase_7/app.js"
   },
   "author": "",
   "license": "ISC",
   "description": ""
 }
-

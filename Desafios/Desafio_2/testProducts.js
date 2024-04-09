@@ -14,7 +14,9 @@ const productManager = new ProductManager(`Products.json`);
 //     await productManager.addProduct({title:'Leche', description:'La serenisima', price:1500, thumbnail:`FOTO DEL PRODUCTO`, code:`lse3`, stock:10})
 //     await productManager.addProduct({title:'Leche', description:'La serenisima', price:1500, thumbnail:`FOTO DEL PRODUCTO`, code:`lse1`, stock:10})
 //     await productManager.addProduct({title:'Leche', description:'La serenisima', price:1500, thumbnail:`FOTO DEL PRODUCTO`, code:`ls55`, stock:10})
- 
+//     await productManager.addProduct({title:'La campagnola', description:'Mermelada de frutilla', price:2500, thumbnail:`FOTO DEL PRODUCTO`, code:'ls56', stock:5})
+//     await productManager.addProduct({title:'Taragui', description:'Yerba Mate - 500gr', price:500, thumbnail:`FOTO DEL PRODUCTO`, code:'YMT500GC22', stock:5})
+        
 
 
 // }
