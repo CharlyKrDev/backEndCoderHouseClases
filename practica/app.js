@@ -22,7 +22,8 @@ const obj = (x, y) => {
         console.log(encontrar)
         console.log("hola")
         console.log(objetos[encontrar])
-        objetos[encontrar] = { ...objetos[encontrar], ...y }
+        objetos[encontrar] = { ...objetos[encontrar], ...y } // al encontrar el index con el spread reemplazo el vigente por el ingresado o sea y
+        console.log(objetos[encontrar])
     }
 }
 

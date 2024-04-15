@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
   },
   "name": "backend",
   "version": "1.0.0",
@@ -10,9 +11,11 @@
     "clase_4": "node --watch clase_4/app.js",
     "clase_5": "node --watch clase_5/app.js",
     "clase_6": "node --watch clase_6/app.js",
-    "clase_7": "node --watch clase_7/app.js"
+    "clase_7": "node --watch clase_7/app.js",
+    "clase_8": "node --watch clase_8/app.js"
   },
   "author": "",
   "license": "ISC",
+  "keywords": [],
   "description": ""
 }
