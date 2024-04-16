@@ -100,17 +100,8 @@ class ProductManager {
 
 
             const encontrarProductoPorId = this.products.find((prod) => prod.id === productId)
-            return !encontrarProductoPorId ? console.log(`NOT FOUND: El producto no existe`) : `
-            <main>
-            <h2>Resultado:</h2>
+            return !encontrarProductoPorId ?  console.log(`NOT FOUND: El producto con ID: ${productId} no existe`) : encontrarProductoPorId;
 
-            <section style="display: flex; flex-direction: column; align-items: center;">
-            <img style="height: 100px; width: 100px; aspect-ratio: 1;" src=${encontrarProductoPorId.thumbnail} alt="">
-            <h2 style="color:black; font-weight: bold;">${encontrarProductoPorId.title}</h2>
-            <p style="font-weight:500">${encontrarProductoPorId.description}</p>
-            <p style="color: red;">$${encontrarProductoPorId.price}</p>
-            </section>
-            </main>`;
 
 
         } catch (error) {
