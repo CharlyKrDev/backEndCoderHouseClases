@@ -13,4 +13,15 @@
  * 
  * Primero recordemos la estructura de nuestro proyecto, hasta el momento sabemos que la estructura básica de nuestro proyecto consiste en la distribución como lo indica la imagen: única carpeta donde vive el proyecto, dentro una carpeta src donde vivía nuestro código, y nuestro servidor dentro.
  * Hay que agregar una carpeta 'routes' donde vivirán nuestro diferentes routers (nota que app.js se queda fuera de routes, pero sigue dentro de src)
+ * 
+ * Servicio de archivos estáticos con Express
+ * 
+ * Como funciona?
+ * -Nuestro servidor tiene la posibilidad de alojar recursos que pueden ser visibles para el cliente de manera directa.
+ * -Podemos configurar una carpeta para que el usuario pueda acceder y ver dichos recursos de manera directa solo con acceder a la ruta donde se encuentra ubicada.
+ * -En este curso y en proyectos profesionales 'public', haciendo referencia como dice el nombre, a recursos públicos de fácil acceso para el cliente.
+ * 
+ * Cuando utilizarlos?
+ * 
+ * Como convertir una carpeta en un recurso estático?
  */
