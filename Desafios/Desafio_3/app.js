@@ -1,186 +1,74 @@
-const fs = require('fs').promises;
-
-class ProductManager {
-    constructor(filePath = 'Products.json') {
-        this.products = [];
-        this.path = filePath;
-    }
-
-    async writeProduct() {
-        try {
-            const data = JSON.stringify(this.products, null, 2)
-            await fs.writeFile(this.path, data);
-
-        } catch (error) {
-
-            console.error(`Problemas al crear el producto`, error)
-
-
-        }
-    }
-
-    async readProducts() {
-
-
-
-        try {
-
-            const data = await fs.readFile(this.path, 'utf8');
-            this.products = JSON.parse(data);
-
-
-        } catch (error) {
-            if (error.code !== 'ENOENT') {
-                throw error
-            } else {
-
-                this.products = []
-
-            }
-
-        }
-
-    }
-
-
-    async addProduct(newProduct) {
-        const { title, description, price, thumbnail, code, stock } = newProduct;
-        try {
-            await this.readProducts();
-
-            const codigoRegistrado = this.products.some(product => product.code === code);
-
-            if (!(title && description && price && thumbnail && code && stock)) {
-                console.log('Todos los campos son obligatorios');
-                return;
-            }
-            if (codigoRegistrado) {
-                console.log(`El código ya está registrado`);
-            } else {
-                const lastId = this.products.length > 0 ? this.products[this.products.length - 1].id : 0
-                const newId = lastId + 1;
-                newProduct.id = newId;
-                this.products.push(newProduct);
-                this.writeProduct()
-                console.log(`El producto ha sido agregado correctamente`)
-
-            }
-
-        } catch (error) {
-
-            console.error(`Problemas al crear el producto`, error)
-
-        }
-
-    }
-
-
-    async getProducts() {
-
-
-        try {
-
-            await this.readProducts();
-
-            return this.products.length === 0 ? `No hay productos` : this.products;
-
-
-        } catch (error) {
-
-            console.error(`Error al consultar productos`, error)
-            return []
-
-        }
-
-    }
-    async getProductId(productId) {
-        try {
-
-            await this.readProducts();
-
-
-            const encontrarProductoPorId = this.products.find((prod) => prod.id === productId)
-            return !encontrarProductoPorId ? console.log(`NOT FOUND: El producto no existe`) : `El producto seleccionado es ${encontrarProductoPorId.title} ${encontrarProductoPorId.description} con un stock es de ${encontrarProductoPorId.stock} unidades`;
-
-
-        } catch (error) {
-
-            console.error(`Error al consultar productos`, error)
-            return []
-
-        }
-
-    }
-    async updateProduct(productId, updatedFields) {
-
-        try {
-            await this.readProducts()
-
-            const consultarIndexPorId = this.products.findIndex(product => product.id === productId);
-
-
-            if (consultarIndexPorId !== -1) {
-                const keys = Object.keys(this.products[consultarIndexPorId])
-                const updatedKeys = Object.keys(updatedFields);
-
-                const allKeysExist = updatedKeys.every(key => keys.includes(key));
-                if (updatedFields.id) {
-
-
-                    console.log(`El ID no se puede cambiar, las keys son: title, description, price, thumbnail, code y stock`)
-
-                }
-                else if (!allKeysExist) {
-
-
-                    console.log(`Para actualizar productos las keys son: title, description, price, thumbnail, code y stock`)
-
-
-                } else {
-
-                    this.products[consultarIndexPorId] = { ...this.products[consultarIndexPorId], ...updatedFields };
-                    this.writeProduct()
-                    console.log('Producto actualizado correctamente');
-
-                }
-            } else {
-                console.log(`El producto buscado no existe.`);
-            }
-
-
-        } catch (error) {
-
-            console.error('Error al actualizar el producto:', error);
-
-        }
-    }
-    async deleteProduct(productId) {
-        try {
-
-            await this.readProducts()
-            const encontrarProducto = this.products.findIndex(product => product.id === productId)
-            if (encontrarProducto !== -1) {
-                this.products.splice(encontrarProducto, 1);
-                await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
-                console.log('Producto eliminado correctamente');
-                return true
-
-
-            } else {
-                console.log('Producto buscado no ha sido encontrado, recuerde que se busca por ID');
-
-            }
-
-
-
-        } catch (error) {
-
-            console.error(`Error al acceder al archivo`, error)
-
-        }
-    }
-
-}
-module.exports = ProductManager
-
-
+const ProductManager = require("./productsManager.js");
+
+const express = require("express");
+const app = express();
+const PORT = 8080;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const productManager = new ProductManager(`Products.json`);
+
+//Endpoints
+app.get("/products", (req, res) => {
+    const getProducts = async () => {
+        productManager
+            .getProducts()
+            .then((productos) => {
+                const limit = parseInt(req.query.limit);
+                !isNaN(limit) ? mostrar = productos.slice(0, limit) : mostrar = productos
+                const prodDisplay = mostrar
+                    .map(
+                        (prod) =>
+                            `<section style="display: flex; flex-direction: column; align-items: center; border: 2px solid black ; background-color: rgba(128, 128, 128, 0.555);">
+                        <img style="height: 100px; width: 100px; aspect-ratio: 1;" src=${prod.thumbnail} alt="">
+                        <h2 style="color:black; font-weight: bold;">${prod.title}</h2>
+                        <p style="font-weight:500">${prod.description}</p>
+                        <p style="font-weight:200">Stock: ${prod.stock}</p>
+                        <p style="color: red; font-weight: bold; font-size=16px;">$ ${prod.price}</p>
+                </section>`
+                    )
+                    .join("");
+
+                const prodGrid = `
+                <h1>Productos</h1>
+                <main style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); width: 100%; gap:8px;">
+                        ${prodDisplay}    
+                </main>`;
+
+                res.setHeader("Content-Type", "text/html");
+                res.send(prodGrid);
+            })
+            .catch((error) => {
+                console.error("Error al obtener productos:", error);
+                res.send(`Error al obtener productos`, error);
+            });
+    };
+
+    getProducts();
+});
+app.get("/products/:pid", (req, res) => {
+    const id = parseInt(req.params.pid);
+
+    const getProductId = async () => {
+        productManager
+            .getProductId(id)
+            .then((productos) => {
+                res.setHeader("Content-Type", "text/html");
+
+                const prod = productos;
+                if (!prod) res.send(`NOT FOUND: El producto con ID: ${id} no existe`);
+                res.send(prod);
+            })
+            .catch((error) => {
+                console.error(`Error al obtener el producto`, error);
+                res.send(`Error al obtener el producto por ID`, error);
+            });
+    };
+
+    getProductId();
+});
+
+
+app.listen(PORT, () => {
+    console.log(`Server running in port: ${PORT}`);
+});
