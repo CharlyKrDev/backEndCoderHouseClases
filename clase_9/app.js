@@ -24,4 +24,28 @@
  * Cuando utilizarlos?
  * 
  * Como convertir una carpeta en un recurso estático?
+ * Que es un middleware?
+ * Seguramente te has dado cuenta de que hemos utilizado mucho la sintaxis app.use. que pasa de manera interna en este punto?
+ * Cada vez que utilizamos un app.use estamos utilizando un middleware. Estas son operaciones que se ejecutan de manera intermedia entre la petición del cliente, y el servicio de nuestro servidor.
+ * Como lo indica el nombre 'middleware' hace referencia a un intermediario, siempre se ejecuta antes de llegar al endpoint que corresponde.
+ * Podemos utilizar un middleware para:
+ * -Dar información sobre las consultas que se están haciendo (logs)
+ * -Autorizar o rechazar usuarios antes de que lleguen al endpoint (seguridad)
+ * -Agregar o alterar información al método req antes de que llegue al endpoint(formateo)
+ * -Redireccionar según sea necesario (router)
+ * -En ciertos casos, finalizar la petición sin que llegue al endpoint (seguridad)
+ * IMPORTANTE!
+ * Como lo ves en el diagrama anterior, los middlewares se ejecutan EN ORDEN, eso quiere decir que, si algún middleware depende de que se haya realizado otra operación ejecutada por un middleware previo, los coloquemos en cascada según prioridad.
+ * 
+ * TIPOS DE MIDDLEWARES
+ * Una aplicación Express puede utilizar los siguientes tipos de middlewares:
+ * -Middleware a nivel aplicación.
+ * -Middleware a nivel endpoint.
+ * -Middleware a nivel del Router.
+ * -Middleware de manejo de errores.
+ * -Middleware incorporado.
+ * -Middleware de terceros.
+ * 
+ * 
+ * 
  */
