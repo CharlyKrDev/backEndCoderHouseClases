@@ -23,7 +23,36 @@
  * 
  * Cuando utilizarlos?
  * 
+ * Los dos casos principales para los cuales encontraras el uso de esta carpeta 'public' para archivos estáticos son:
+ * * Cuando necesitemos alojar imágenes y servirlas directamente al cliente.
+ * * Cuando necesitemos alojar una pagina web en todos sus sentidos: html, css, js. En esta clase haremos una pagina sencilla para mostrar el alcance de public.
+ * 
  * Como convertir una carpeta en un recurso estático?
+ * 
+ * Para poder utilizar los recursos de una carpeta de manera estática, basta conque en el servidor especifiquemos como 'express.static' dicha carpeta con la siguiente sintaxis:
+ * 
+ * app.use(express.static('public'))
+ * 
+ * Ahi indicamos que, todo lo que viva en la carpeta public, podrá ser accedido directamente desde la carpeta public.
+ * NOTA: IMPORTANTE: Express busca los archivos relativos al directorio estático (en este caso 'public') por lo que el nombre del directorio estático no forma parte de la URL ej:
+ * https://localhost:8080/index.html (no hace falta /public/index.html)  https://localhost:8080/img/foto.png (no hace falta /public/img/foto.png)
+ * 
+ * Prefijo virtual:
+ * Para crear un pre fijo virtual (donde el path de acceso no existe realmente en el sistema de archivos) para los archivos servidores por express.static, debemos especificar un path de acceso de montaje para el directorio estático:
+ * 
+ * app.use('/static', express.static('public'))
+ * 
+ * ahora se le asigna un "pseudo" nombre a la carpeta public quedando la url asi:
+ * https://localhost:8080/static/index.html 
+ * https://localhost:8080/static/img/foto.png
+ * 
+ * Path absoluto:
+ * 
+ * El path que se proporciona a la función express.static es relativo al directorio desde donde inicia el proceso node.
+ * Por eso si ejecutamos la aplicación Express desde cualquier otro directorio, es mas seguro utilizar el path absoluto del directorio al que se desea dar servicio:
+ * 
+ * app.use('/static', express.static(__dirname + '/public'))
+ * 
  * Que es un middleware?
  * Seguramente te has dado cuenta de que hemos utilizado mucho la sintaxis app.use. que pasa de manera interna en este punto?
  * Cada vez que utilizamos un app.use estamos utilizando un middleware. Estas son operaciones que se ejecutan de manera intermedia entre la petición del cliente, y el servicio de nuestro servidor.
