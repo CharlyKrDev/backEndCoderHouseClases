@@ -55,12 +55,10 @@ app.delete('/tasks/:id', (req, res)=>{
     tasks = tasks.filter(task => task.id !== taskId) // otra forma seria con findIndex y splice
     // const taskFind = tasks.findIndex((task) => task.id === taskId)
     // taskFind !== -1 ? tasks.splice(taskFind, 1) : console.log(`Error`)
-    if (tasks.length === initialLength) {
-        res.status(404).json({ error: 'No se encontró ninguna tarea con el ID proporcionado' });
-    } else {
-        res.json({ message: 'Tarea eliminada correctamente' });
-    }
-
+   tasks.length === initialLength 
+   ? res.status(404).json({ error: 'No se encontró ninguna tarea con el ID proporcionado' })
+   : res.json({ message: 'Tarea eliminada correctamente' });
+    
 })
 
 
