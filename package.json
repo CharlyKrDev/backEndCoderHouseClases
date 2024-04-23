@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.0"
   },
   "name": "backend",
@@ -15,7 +16,6 @@
     "clase_7": "node --watch clase_7/app.js",
     "clase_8": "node --watch clase_8/src/app.js",
     "desafio_3": "node --watch Desafios/Desafio_3/app.js"
-
   },
   "author": "",
   "license": "ISC",

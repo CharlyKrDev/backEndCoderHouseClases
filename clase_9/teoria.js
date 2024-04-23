@@ -74,7 +74,23 @@
  * -Middleware de manejo de errores.
  * -Middleware incorporado.
  * -Middleware de terceros.
+ * Middleware de terceros:
+ * El uso puede ser a nivel de aplicación o a nivel de Router. Por ejemplo, instalamos y usamos la función de middleware de análisis de cookies cookie-parse
  * 
+ * Que es Multer?
  * 
+ * Multer es un middleware de terceros, pensado para poder realizar carga de archivos al servidor.
+ * En ocasiones el cliente necesitara subir una imagen, un video o un archivo, según sea nuestra aplicación, ellos nos lleva a configurar nuestro servidor para soportar estos archivos y poder almacenarlos en donde nosotros le indiquemos.
+ * Al ser de terceros, necesitaremos instalarlo para poder utilizarlo.
+ * 
+ * 1) Instalación:
+ * 
+ * npm install multer
+ * 
+ * 2) Configurar multer en el proyecto actual:
+ * 
+ *  Una vez que instalamos MULTER, podemos importarlo en nuestro proyecto y configurarlo donde lo necesitemos (puede ser directamente en app, o bien se recomienda hacerlo en un archivo al mismo nivel de app llamado 'utils')
+ * 
+ * Contar con un uploader externo a app.js brindara mas dinamismo al momento de utilizarlo, ya que podemos colarlo en el router que necesitemos y no necesariamente instanciarlo a nivel general.
  * 
  */

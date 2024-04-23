@@ -1,4 +1,4 @@
-const ProductManager = require("./app");
+import { ProductManager } from "./app.js";
 
 
 
@@ -63,13 +63,13 @@ const productManager = new ProductManager(`Products.json`);
 
 //ACTUALIZACIÓN DE PRODUCTO
 
-// const updateProducts = async (id, updateFields) => {
+const updateProducts = async (id, updateFields) => {
 
-//     productManager.updateProduct( id, updateFields)
+    productManager.updateProduct( id, updateFields)
     
-// }
+}
 
-// updateProducts(3, {title: `Manteca`})
+updateProducts(3, {title: `Manteca`})
 
 //BORRAR PRODUCTO POR ID
 

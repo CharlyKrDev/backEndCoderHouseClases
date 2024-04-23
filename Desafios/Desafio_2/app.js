@@ -1,6 +1,6 @@
-const fs = require('fs').promises;
+import fs from "fs/promises";
 
-class ProductManager {
+export class ProductManager {
     constructor(filePath = 'Products.json') {
         this.products = [];
         this.path = filePath;
@@ -181,6 +181,6 @@ class ProductManager {
     }
 
 }
-module.exports = ProductManager
+
 
 
