@@ -106,9 +106,33 @@
  * 
  * Luego, fuera de layouts, pero dentro de views, agregaremos un index (pagina principal)
  * 
- * 3) 
+ * 3) Configurar main.handlebars
  * 
+ * Nota que es la estructura de un html cualquiera, sin embargo, esta vez dentro de body colocamos con {{{}}} el nombre body (única vez que encerraremos en tres llaves)
  * 
+ * Ahora, cada vista de views que vayamos a renderizar, se renderizará dentro de este body. De esta manera, no tenemos que escribir una estructura html completa por cada vista que queramos trabajar. 
+ * Estructura normal de un html
+ *  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 9 - MULTER</title>
+</head>
+<body>
+{{{body}}} <---- a esto se refiere
+</body>
+</html>
  * 
+ * 4) Saludar desde index.handlebars
+ * Nota que, como la vista index estará dentro del main layout, ya no es necesario crear una pagina para poder mostrar la vista.
+ * Generamos un saludo, indicando que al entrar a dicha ruta se mostrará  el nombre. Nota como dejamos name entre las dos llaves, haciendo referencia a que es una variable reemplazable al momento de hacer el preprocesamiento.
+ * <h1>Hola {{name}}<h1/>
+ * Podemos colar cuantas variables necesitemos al momento de renderizar.
+ * 5) Instalar el motor de handlebars
+ * npm install express-handlebars
+ * 6) Configuración handlebars en nuestro motor express
+ * 6.5)Archivo utils.js para poder exportar el __dirname (en el caso de trabajar con type: module y no commonjs)
+
 
  */

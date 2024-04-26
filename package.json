@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.0"
   },
@@ -9,6 +10,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start":   "node --watch clase_10/handlebars/src/app.js",
     "clase_3": "node --watch clase_3/app.js",
     "clase_4": "node --watch clase_4/app.js",
     "clase_5": "node --watch clase_5/app.js",

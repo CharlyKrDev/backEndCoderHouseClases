@@ -1,0 +1,13 @@
+      <!-- Uses built-in `if` helper. -->
+  {{#if showTitle}}
+    <h1>Usuario</h1>
+
+  {{/if}}
+
+    <!-- Calls `foo` helper, overridden at render-level. -->
+<h2>{{foo}}</h2>
+<ul>
+    {{#each (getUserProperties)}}
+    <li>{{this.key}}: {{this.value}}</li>
+    {{/each}}
+</ul>

@@ -1,0 +1,39 @@
+
+
+{{#each userRegister}}
+ <h3>Te has registrado correctamente</h3>
+ <p>Usuario: {{this.Usuario}}</p>
+ <p>Email: {{this.Email}}</p>
+  {{/each}}
+
+
+
+
+
+
+
+{{!-- 
+
+    <h2>Ingresar</h2>
+
+    <form action="/user" method="post">
+    <label for="">Nombre</label>
+    <input type="text"  name="userName">
+    <label for="">E-mail</label>
+    <input type="email"  name="userEmail">
+    <label for="">Password</label>
+    <input type="text"  name="userPassword">
+    <button type="submit">Cargar</button>
+</form>
+{{else}}
+ {{#each user}}
+ <h3>Te has registrado correctamente</h3>
+ <p>Usuario: {{this.userName}}</p>
+ <p>Email: {{this.userEmail}}</p>
+  {{/each}}
+  {{/if}}
+
+ --}}
+
+
+</section>
