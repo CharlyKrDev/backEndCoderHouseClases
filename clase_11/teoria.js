@@ -41,7 +41,7 @@
  * COMO FUNCIONA?
  * Primero, el cliente tiene que enviar una solicitud HTTP llamada Handshake (apretón de manos). Este apretón de manos será un “acuerdo” o “contrato” de confianza para que el servidor pueda actualizar al cliente sin que éste se lo pida. 
 
-El servidor recibe la petición de Handshake y procede a “responderle el saludo”, a esto se le llama “Abrir conexión”.
+El servidor recibe la petición de Handshake y procede a “responder el saludo”, a esto se le llama “Abrir conexión”.
 
 A partir de este punto, el canal queda abierto de manera bidireccional, por lo que el cliente se puede comunicar con el servidor cuando quiera y viceversa. 
 
