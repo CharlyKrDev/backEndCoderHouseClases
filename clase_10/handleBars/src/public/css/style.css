@@ -1,0 +1,20 @@
+body{
+    background-color: aquamarine;
+}
+
+.formUser{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    width: 200px;
+
+}
+
+.formUser button{
+
+    width: 70px;
+    margin: auto;
+    padding: 2px 4px;
+    border: 1px solid;
+    border-radius: 10px;
+}

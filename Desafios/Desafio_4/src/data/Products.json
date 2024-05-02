@@ -1,0 +1,127 @@
+[
+  {
+    "title": "La campagnola",
+    "description": "Mermelada de frutilla",
+    "price": 2500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "ls56",
+    "stock": 5,
+    "status": true,
+    "id": 4
+  },
+  {
+    "title": "Taragui",
+    "description": "Yerba Mate - 500gr",
+    "price": 500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "YMT500GC22",
+    "stock": 5,
+    "status": true,
+    "id": 5
+  },
+  {
+    "title": "Capitan del espacio",
+    "description": "Alfajor simple Chocolate",
+    "price": 1500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "alfcap1",
+    "stock": 10,
+    "status": true,
+    "id": 6
+  },
+  {
+    "title": "La serenisima",
+    "description": "Dulce de Leche - 500gr",
+    "price": 1500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "Dlse1",
+    "stock": 10,
+    "status": true,
+    "id": 7
+  },
+  {
+    "title": "Havanna",
+    "description": "Alfajor con sal marina",
+    "price": 22500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "lssssssses3",
+    "stock": 5,
+    "status": true,
+    "id": 10
+  },
+  {
+    "title": "La nonna",
+    "description": "Postre Flan",
+    "price": 2500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "Lnpf200",
+    "stock": 5,
+    "status": true,
+    "id": 11
+  },
+  {
+    "title": "Havanna",
+    "description": "Havannet",
+    "price": 2500,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "code": "Hvanet",
+    "stock": 5,
+    "status": true,
+    "id": 12
+  },
+  {
+    "title": "asdas",
+    "description": "asdasd",
+    "code": "weqwe",
+    "price": "123123",
+    "status": true,
+    "stock": "1231",
+    "category": "1dasda",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "id": 13
+  },
+  {
+    "title": "asd",
+    "description": "asdas",
+    "code": "3123",
+    "price": "12312",
+    "status": true,
+    "stock": "123",
+    "category": "casc",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "id": 14
+  },
+  {
+    "title": "123123",
+    "description": "1231231",
+    "code": "2312312312312",
+    "price": "123123",
+    "status": true,
+    "stock": "1231231",
+    "category": "asd",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "id": 15
+  },
+  {
+    "title": "asdasd",
+    "description": "asdasdas",
+    "code": "qweqweqweq",
+    "price": "12312312",
+    "status": true,
+    "stock": "1231231",
+    "category": "123123",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "id": 16
+  },
+  {
+    "title": "asdasda",
+    "description": "asdasdasd",
+    "code": "23123123",
+    "price": "123123",
+    "status": true,
+    "stock": "123123",
+    "category": "123123123",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1554/1554591.png",
+    "id": 17
+  }
+]

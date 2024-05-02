@@ -44,7 +44,7 @@ const userName = [
 
 const numRandom = Math.floor(Math.random() * userName.length);
 const user = userName[numRandom];
-const userPicked =[user] //<--- importante entender que necesito trabajar sobre un array de objetos, por eso en getUserP... uso el modulo Object, pq de esa forma formo un array con las keys que luego puedo mapear y asignar esa key a un valor: array.key para que de devuelve el valor que le corresponde a cada key. en userPicked force la conversion de un objeto a un array de objetos para poder pasar el parámetro de una forma mas sencilla al render de about.
+const userPicked =[user] //<--- importante entender que necesito trabajar sobre un array de objetos, por eso en getUserProperties... uso el modulo Object, pq de esa forma formo un array con las keys que luego puedo mapear y asignar esa key a un valor: array.key para que de devuelve el valor que le corresponde a cada key.(eso fue cuando usaba Object.keys, pero luego cambie por Object.entries que devuelve de forma directa las keys y los values sin necesidad de llamar a los values por separado, a diferencia del Object.keys que solo devuelve las keys y luego tengo que usarlas para conseguir los values) en userPicked force la conversion de un objeto a un array de objetos para poder pasar el parámetro de una forma mas sencilla al render de about.
 export const hbs = create({
   
   helpers: {
@@ -56,7 +56,7 @@ export const hbs = create({
       },
       getUserProperties() {
           
-          return Object.keys(user).map(key => ({ key, value: user[key] }));
+          return Object.entries(user).map(([key, value]) => ({key, value}));
       }
   }
 });

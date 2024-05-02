@@ -25,6 +25,8 @@ registerRouter.post("/user", (req, res) => {
   console.log(userRegister);
 
   res.render("register", {
+    style:'style.css',
+
     userRegister,
   });
 
