@@ -1,0 +1,22 @@
+      <!-- Uses built-in `if` helper. -->
+  {{#if showTitle}}
+    <h1>Bienvenid@</h1>
+
+  {{/if}}
+
+  <section>
+    <input type="text" id="message" placeholder="Ingrese su mensaje">
+    <button id="btnSend">Enviar</button>
+  </section>
+  
+  <p id="idMessage">
+
+  </p>
+
+    <!-- Calls `foo` helper, overridden at render-level. -->
+<h2>{{foo}}</h2>
+<ul>
+    {{#each (getUserProperties)}}
+    <li>{{this.key}}: {{this.value}}</li>
+    {{/each}}
+</ul>
