@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import useRouter from './routes/users.routes.js';
-
+import  dotenv from 'dotenv';
 
 
 const app = express();
@@ -9,7 +9,11 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb+srv://CharlyKrDev:3a643520*@charlykrdev.ygn6aqg.mongodb.net/testMongooseDB?retryWrites=true&w=majority&appName=CharlyKrDev') //<--- el nombre de la base de datos se carga manual en esta parte, y va antes del  ? ..(.net/?retryWr).
+ 
+dotenv.config()
+const mongoServer = process.env.MONGO_URL
+
+mongoose.connect(mongoServer) 
   .then(() => {
     console.log('Conectado a la DB');
   })
@@ -21,3 +25,4 @@ mongoose.connect('mongodb+srv://CharlyKrDev:3a643520*@charlykrdev.ygn6aqg.mongod
 
 app.use('/api/users', useRouter)
 app.listen(PORT, console.log(`Server running on port: ${PORT}`));
+

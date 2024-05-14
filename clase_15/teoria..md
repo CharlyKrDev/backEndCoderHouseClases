@@ -1,4 +1,4 @@
-// Clase_15 Mongoose
+## Clase_15 Mongoose
 
 CRUD: Acrónimo que hace referencia a las cuatro operaciones fundamentales de una base datos (Create Read Update Delete)
 Proyecciones: Una proyección se incluye al momento de hacer una búsqueda.
@@ -6,7 +6,7 @@ Sort: Sirve para poder hacer un ordenamiento de la información. La sintaxis es:
 Skip: Omite el numero de documentos indicados. Su sintaxis es: .skip(offset)
 Limit: Limita el numero de documentos devueltos. Su sintaxis es: .limit(num)
 
-Clientes de BD
+## Clientes de BD
 
 Cada vez que accedemos a una base de datos para realizar cualquier operación CRUD, nosotros nos convertimos en clientes de esa base de datos.
 
@@ -18,18 +18,18 @@ Podemos ser diferentes tipos de clientes para acceder a la misma base:
 
 Ya fungimos como clientes CLI, vamos a visualizar brevemente los otros tipos de clientes.
 
-Cliente GUI - Mongo DB Compass
+## Cliente GUI - Mongo DB Compass
 
 Es el cliente que puede conectar a la base de datos desde un programa gráfico destinado a ello. El cliente GUI por excelencia para trabajar con MondoDB es MongoDB Compass.
 Este suele instalarse al momento en el que instalamos Mongo.
 
-Cliente APP
+## Cliente APP
 
 Este sera nuestro fuerte: Poder acceder a la base de datos desde nuestra aplicación, permite utilizarla a partir de código, a partir de un contexto.
 
 Esto significa que, una vez que se encuentra correctamente configurada la app, no dependeremos tanto de meter mano manualmente pues nuestro programa sabra en que momento realizar las operaciones CRUD.
 
-Cliente Web - Mongo Atlas
+## Cliente Web - Mongo Atlas
 
 Cuando conseguimos tener nuestra base de datos en la nube, podemos conectarnos a un servidor en la web para poder analizar los datos y realizar las operaciones desde cualquier computadora.
 
@@ -37,17 +37,16 @@ Es de los modelos mas utilizados, debido a que no es necesario contar con una co
 
 El cliente web por excelencia para MondoDB es Atlas, ademas de fungir como DBaaS.
 
-DBassS: Database as a Service.
+## DBassS: Database as a Service.
 
-El problema:
-Escalabilidad y factibilidad.
+* El problema: Escalabilidad y factibilidad.
 
 Que pasa cuando tu empresa va creciendo y necesitamos almacenar cantidad enormes de información?
 Estamos dispuestos a dedicar cuartos completos con bases de datos?
 Que tan elevados pueden llegar a ser los costos de tener que comprar infraestructura física para el negocio? Valdrá la pena?
 Y si hubiera forma de "rentar" dicho espacio a un proveedor, para solo preocuparme en los aspectos mas superficiales de la base de datos?
 
-La solución: DBaaS
+* La solución: DBaaS
 
 Utilizar una base de datos como servicio, implica el poder hacer uso de una base de datos, sin preocuparse en tener que gestionar todo el aspecto físico que este implica, es decir, podemos rentar espacios para poder alojar la información de nuestra de base de datos.
 
@@ -55,7 +54,7 @@ Todos los aspectos físicos, de mantenimiento y seguridad de dichas bases de dat
 
 Amazon, Google, Microsoft, Mongo Atlas son algunos ejemplos.
 
-Ventajas de modelo DBaaS:
+## Ventajas de modelo DBaaS:
 
 * Se elimina la infraestructura física de la ecuación ahorrando en costos, ya que el proveedor es responsable del mantenimiento y la disponibilidad de los sistemas. Los usuarios son responsables de sus propios datos.
 
@@ -65,7 +64,7 @@ Ventajas de modelo DBaaS:
 
 * Personal cualificado. A traves de DBaaS se accede a expertos en bases de datos que se encargaran de todas las tareas de mantenimiento, actualización, seguridad y gestión.
 
-MongoDB Atlas:
+## MongoDB Atlas:
 
 Características destacadas.
 
@@ -99,7 +98,7 @@ En protección y seguridad:
 * Supervision detallada y alertas personalizadas.
 
 
-MONGOOSE
+## MONGOOSE
 
 Mongoose es un ODM (Object Document Mapping), el cual nos permitirá definir esquemas para poder gestionar colecciones y documentos entre una aplicación de nodejs y una base de datos en MongDB.
 
