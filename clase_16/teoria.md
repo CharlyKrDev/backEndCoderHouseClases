@@ -18,7 +18,7 @@ Este nos permitirá tener una referencia previa al momento de buscar un document
 
 El índice se asocia a un atributo del documento y permite que las búsquedas se hagan desde puntos específicos, evitando el recorrido completo de la colección.
 
-Haste este momento nuestras consultas no repercuten en performance, debido a que los datos que consultamos son muy pequeños, Pero que pasaría si comenzamos a incrementar el numero de datos en nuestra base? Que tanto afectan estas búsquedas?
+Hasta este momento nuestras consultas no repercuten en performance, debido a que los datos que consultamos son muy pequeños, Pero que pasaría si comenzamos a incrementar el numero de datos en nuestra base? Que tanto afectan estas búsquedas?
 
 Prever un buen plan de indexación evitara problemas de lentitud en las consultas y se considera una practica necesaria a nivel enterprise, al momento de configurar los schemas de nuestros distintos modelos. !hagamos habito de utilizarlos!
 
