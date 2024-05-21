@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import coursesModel from "./courses.model.js";
 const studentCollection = "estudiantes"
 
 
@@ -10,7 +10,7 @@ const studentSchema = new mongoose.Schema({
     email:String,
     gender:String,
     group:String,
-    course:{
+    courses:{
         type: [{
             course:{
 

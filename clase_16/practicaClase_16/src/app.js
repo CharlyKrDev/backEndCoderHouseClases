@@ -2,7 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose';
 // import studentModel from './models/user.model';
 import dotenv from "dotenv";
-import { studentRouter } from './routers/student.route.js';
+import studentRouter from './routers/student.route.js';
+import coursesRouter from './routers/course.route.js';
 
 const app = express();
 const PORT = 8080;
@@ -22,6 +23,8 @@ mongoose
   });
 
 app.use('/', studentRouter )
+app.use('/', coursesRouter )
+
 
 
 

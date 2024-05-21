@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const coursesCollection = "curso"
+const coursesCollection = "cursos"
 
 
 const coursesSchema = new mongoose.Schema({
@@ -8,9 +8,15 @@ const coursesSchema = new mongoose.Schema({
     title: String,
     description: String,
     difficulty:String,
-    topics:String,
+    topics:{
+        type:Array,
+        default:[]
+    },
     professor:String,
-    students:[]
+    students:{
+        type:Array,
+        default:[]
+    }
 })
 
 const coursesModel = mongoose.model(coursesCollection, coursesSchema)
