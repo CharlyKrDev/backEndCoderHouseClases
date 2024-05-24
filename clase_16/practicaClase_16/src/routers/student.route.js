@@ -1,5 +1,6 @@
 import { Router } from "express";
 import studentModel from "../models/student.model.js";
+import coursesModel from "../models/courses.model.js";
 
 const studentRouter = Router();
 
@@ -73,11 +74,14 @@ studentRouter.get('/api/user/explain', async (req, res) =>{
    })
 
 
-   studentRouter.get('/api/student/:id', async (req, res)=>{
+   studentRouter.get('/api/student/:id', async (req, res)=>{ //<-- el middleware 'pre' se utiliza para reemplazar el código comentado(1) y hacerlo mas simple con el código de arriba(2), pero es importante respetar el find en vez de findOne.
       const studentId = req.params.id 
       try {
          const student = await studentModel.findOne({_id:studentId})
-         console.log(student.courses)
+
+         const studentPopulate = await studentModel.find({_id:studentId})//<-(2)
+         //(1) -> const studentPopulate = await studentModel.findOne({_id:studentId}).populate("courses.course") //<-- Con esta linea de código traigo la relación entre schemas, en este caso studentModel y courseModel
+         console.log(JSON.stringify(studentPopulate, null, '\t'))
          res.status(200).send(student)
       } catch (error) {
          console.error(error, "error")
@@ -87,23 +91,42 @@ studentRouter.get('/api/user/explain', async (req, res) =>{
    })
 
 
-      studentRouter.put('/api/student/:id', async (req, res)=>{
-         const studentId = req.params.id 
-         const {courseId} = req.body
-         try {
-            const student = await studentModel.findOne({_id:studentId})
-            student.courses.push({course: courseId})
-            await student.save() //<--- puedo pushear y luego usar el método save() sobre el objeto, o puedo  --> usar await studentModel.updateOne({_id:studentId}, student) que busca actualizar el objeto, es básicamente lo mismo. La diferencia es que save() guarda todos los cambios que se hayan realizado sobre el objeto, mientras que updateOne() solo el parámetro que le pasemos.
-            
-            res.status(200).send(student)
-         } catch (error) {
-            console.error(error, "error")
-   
-         }
-   
-      })
-
+   studentRouter.put('/api/student/:id', async (req, res) => {
+      const studentId = req.params.id;
+      const { courseId } = req.body;
+    
+      try {
+        const studentFind = await studentModel.findOne({ _id: studentId });
+        if (!studentFind) {
+          return res.status(404).send({ message: 'Estudiante no encontrado' });
+        }
+    
+        const courseFind = await coursesModel.findOne({ _id: courseId });
+        if (!courseFind) {
+          return res.status(404).send({ message: 'Curso no encontrado' });
+        }
+    
+        const checkStudent = courseFind.students.find(student => student.toString() === studentId.toString());
+        if (checkStudent) {
+          return res.status(400).send({ message: 'El alumno ya está inscrito en el curso' });
+        }
+    
+        studentFind.courses.push(courseId);
+        await studentFind.save();//<--- luego de pushear puedo usar el método save() sobre el objeto, o puedo  --> usar await studentModel.updateOne({_id:studentId}, student) que busca actualizar el objeto, es básicamente lo mismo. La diferencia es que save() guarda todos los cambios que se hayan realizado sobre el objeto, mientras que updateOne() solo el parámetro que le pasemos.
+    
+        courseFind.students.push(studentId);
+        await courseFind.save();
+    
+        res.status(200).send({ message: 'Estudiante añadido al curso correctamente' });
+      } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send({ message: 'Error interno del servidor' });
+      }
+    });
       
 
       
-   export default studentRouter
+   export default studentRouter   
+   
+
+    

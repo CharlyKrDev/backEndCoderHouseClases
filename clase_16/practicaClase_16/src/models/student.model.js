@@ -15,13 +15,18 @@ const studentSchema = new mongoose.Schema({
             course:{
 
                 type:mongoose.Schema.Types.ObjectId,
-                ref:"courses"
+                ref:"cursos"
             
             }
         }],
         default:[]
     }
 })
+
+studentSchema.pre('find', function(next) {//<-- Middleware 'pre'
+    this.populate("courses.course");
+    next();
+  });
 
 const studentModel = mongoose.model(studentCollection, studentSchema)
 
