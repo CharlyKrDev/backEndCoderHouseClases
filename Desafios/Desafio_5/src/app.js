@@ -1,6 +1,5 @@
 import express from "express";
 import session from "express-session";
-import bodyParser from "body-parser";
 import { engine } from "express-handlebars";
 import mongoose from "./config/database.js";
 import MongoStore from "connect-mongo";
@@ -11,7 +10,6 @@ import initializePassport from "./config/passport.config.js";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { mongoServer } from "./config/database.js";
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,16 +30,16 @@ app.set("views", viewsPath);
 app.enable("view cache");
 app.use(express.static(publicPath));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(
   session({
     secret: "secretkey",
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl:
-      mongoServer,
+      mongoUrl: mongoServer,
     }),
   })
 );
