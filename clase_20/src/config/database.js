@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
 dotenv.config();
-export const mongoServer = process.env.MONGO_URL_DESAFIO_6;
+export const mongoServer = process.env.MONGO_URL_DESAFIO_5;
 mongoose.connect(mongoServer);
 
 const db = mongoose.connection;
