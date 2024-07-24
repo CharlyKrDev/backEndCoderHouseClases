@@ -13,19 +13,20 @@ router.get('/githubcallback', passport.authenticate('github', {failureRedirect:'
 
     req.session.user = req.user
 
-    if (!req.user) return res.status(400).send({ status: "error", error: "Datos incompletos" })
-        try {
-            req.session.user = {
-                first_name: req.user.first_name,
-                last_name: req.user.last_name,
-                email: req.user.email,
-                age: req.user.age,
-            };
-            res.redirect('/profile');
-    
-        } catch (err) {
-            res.status(500).send('Error al iniciar sesión');
-        }
+        if (!req.user) return res.status(400).send({ status: "error", error: "Datos incompletos" })
+    try {
+        req.session.user = {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            email: req.user.email,
+            age: req.user.age,
+        };
+        console.log(req.session.user)
+        res.redirect('/profile');
+
+    } catch (err) {
+        res.status(500).send('Error al iniciar sesión');
+    }
 })
 
 router.post('/register', passport.authenticate('register', { failureRedirect: 'failregister' }), async (req, res) => {

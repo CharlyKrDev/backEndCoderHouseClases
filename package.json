@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "artillery": "^2.0.18",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
@@ -8,6 +9,7 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.6.1",
     "mongoose": "^8.3.4",
     "mongoose-paginate-v2": "^1.8.1",
@@ -15,7 +17,9 @@
     "nodemon": "^3.1.0",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
+    "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
+    "pnpm": "^9.6.0",
     "prettier": "^3.2.5",
     "socket.io": "^4.7.5"
   },
@@ -30,7 +34,8 @@
     "clase_6": "node --watch clase_6/app.js",
     "clase_7": "node --watch clase_7/app.js",
     "clase_8": "node --watch clase_8/src/app.js",
-    "desafio_3": "node --watch Desafios/Desafio_3/app.js"
+    "desafio_3": "node --watch Desafios/Desafio_3/app.js",
+    "clase_33": "node --watch clase_33/app.js"
   },
   "author": "",
   "license": "ISC",
