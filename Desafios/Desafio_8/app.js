@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression({
     brotli: { enabled: true, zlib: {} },
     zlib: {}
-}));app.use("/", productsRouter)
+}));app.use("/mockingproducts", productsRouter)
 
 
 
