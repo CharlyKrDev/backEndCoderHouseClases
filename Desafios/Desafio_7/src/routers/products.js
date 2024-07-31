@@ -5,7 +5,7 @@ import CartError from "../services/CartErrors.js";
 import { generateProductCreationErrorInfo } from "../services/info.js";
 const router = Router();
 
-router.get("/mockingproducts", async (req, res) => {
+router.get("/", async (req, res) => {
     let products = [];
   
     try {
