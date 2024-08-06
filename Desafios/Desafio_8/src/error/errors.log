@@ -1,0 +1,5 @@
+6/8/2024, 11:07:42 [debug]; This is a debug message
+6/8/2024, 11:07:42 [http]; This is an HTTP message
+6/8/2024, 11:07:42 [info]; This is an info message
+6/8/2024, 11:07:42 [warning]; This is a warning message
+6/8/2024, 11:07:42 [error]; This is an error message
